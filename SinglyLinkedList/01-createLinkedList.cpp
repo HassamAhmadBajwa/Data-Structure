@@ -37,6 +37,16 @@ public:
             p = p->next;
         }
     }
+    ~LinkedList()
+    {
+        Node *current = first;
+        while (current != NULL)
+        {
+            Node *next = current->next;
+            delete current;
+            current = next;
+        }
+    }
 };
 
 int main()

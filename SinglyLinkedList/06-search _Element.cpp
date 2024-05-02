@@ -4,42 +4,53 @@ class Node
 {
 public:
     int data;
-    Node *next = nullptr;
+    Node *next;
     Node(int data)
     {
         this->data = data;
-        this->next = nullptr;
+        this->next = next;
     }
 };
 class LinkedList
 {
 public:
     Node *head = nullptr;
-    Node *temp, *newNode;
     void create(int A[], int size)
     {
         head = new Node(A[0]);
-        temp = head;
+        Node *temp = head;
         for (int i = 1; i < size; i++)
         {
-            newNode = new Node(A[i]);
+            Node *newNode = new Node(A[i]);
             temp->next = newNode;
             temp = newNode;
         }
     }
     void display()
     {
-        int count = 0;
-        Node *p = head;
-        while (p != nullptr)
+        Node *d = head;
+        while (d != NULL)
         {
-            count++;
-            cout << p->data << " ";
-            p = p->next;
+            cout << d->data << " ";
+            d = d->next;
         }
         cout << endl;
-        cout << "Total Nodes are: " << count << endl;
     }
+    // function to search an element of the node....
+    int search_Element(int num)
+    {
+        Node *s = head;
+        while (s != NULL)
+        {
+            if (s->data == num)
+            {
+                return true;
+            }
+            s = s->next;
+        }
+        return false;
+    }
+    // destructor to delete the node...
     ~LinkedList()
     {
         Node *current = head;
@@ -53,8 +64,10 @@ public:
 };
 int main()
 {
-    int A[] = {1, 2, 3, 4, 5};
+    int A[] = {2, 3, 4, 6, 7, 8};
     LinkedList list;
-    list.create(A, 5);
+    list.create(A, 6);
     list.display();
+    int result = list.search_Element(7);
+    cout << result << endl;
 }

@@ -35,6 +35,16 @@ public:
             RecursiveDisplay(p->next);
         }
     }
+    ~LinkedList()
+    {
+        Node *current = head;
+        while (current != NULL)
+        {
+            Node *next = current->next;
+            delete current;
+            current = next;
+        }
+    }
 };
 int main()
 {

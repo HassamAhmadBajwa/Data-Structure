@@ -27,16 +27,33 @@ public:
             temp = newNode;
         }
     }
-    int Sum()
+    void max()
     {
-        int sum = 0;
+        Node *t = head;
+        int max = -32678;
+        while (t != nullptr)
+        {
+            if (t->data > max)
+            {
+                max = t->data;
+                t = t->next;
+            }
+            else
+            {
+                t = t->next;
+            }
+        }
+        cout << max << endl;
+    }
+    void display()
+    {
         Node *p = head;
         while (p != 0)
         {
-            sum = sum + p->data;
+            cout << p->data << " ";
             p = p->next;
         }
-        return sum;
+        cout << endl;
     }
     ~LinkedList()
     {
@@ -51,9 +68,9 @@ public:
 };
 int main()
 {
-    int A[] = {2, 4, 6, 8, 10};
+    int A[] = {1, 2, 3, 4, 5};
     LinkedList list;
     list.create(A, 5);
-    int sum = list.Sum();
-    cout << "Total sum is : " << sum << endl;
+    list.display();
+    list.max();
 }
